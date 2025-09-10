@@ -1,27 +1,49 @@
-import './App.css';
+// src/App.js
+import React from 'react';
+import Tarefa from './Tarefa';
+import './App.css'; // Opcional, para estilizar o container principal
 
 function App() {
+  const tarefas = [
+    {
+      id: 1,
+      titulo: 'Comprar pão',
+      responsavel: 'João',
+      concluida: true,
+    },
+    {
+      id: 2,
+      titulo: 'Estudar React',
+      responsavel: 'Maria',
+      concluida: false,
+    },
+    {
+      id: 3,
+      titulo: 'Lavar o carro',
+      responsavel: 'Pedro',
+      concluida: false,
+    },
+    {
+      id: 4,
+      titulo: 'Ler um livro',
+      responsavel: 'Ana',
+      concluida: true,
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+    <div className="app-container">
+      <h1>Lista de Tarefas</h1>
+      <div className="lista-de-tarefas">
+        {tarefas.map((tarefa) => (
+          <Tarefa
+            key={tarefa.id}
+            titulo={tarefa.titulo}
+            responsavel={tarefa.responsavel}
+            concluida={tarefa.concluida}
+          />
+        ))}
+      </div>
     </div>
   );
 }
